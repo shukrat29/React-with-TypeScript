@@ -12,11 +12,16 @@ const App: React.FC = () => {
       { id: Math.random().toString(), text: text },
     ]);
   };
+
+  const todoDeleteHandler = (todoId: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== todoId);
+    });
+  };
   return (
     <div className="App">
-      <h1>Hello, React with TypeScript!</h1>
       <InputTodoList onAddTodo={todoHandler} />
-      <TodoList items={todos} />
+      <TodoList items={todos} onDeleteTodo={todoDeleteHandler} />
     </div>
   );
 };
